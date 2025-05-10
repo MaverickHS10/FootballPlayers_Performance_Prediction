@@ -11,7 +11,7 @@ feature_columns = ['Min', 'xG', 'xAG', 'Sh', 'SoT', 'KP', 'PrgP', 'PrgC', 'SCA90
 st.set_page_config(page_title="G+A Predictor", layout="wide")
 st.title(" Player G+A Predictor")
 
-tab1, tab2 = st.tabs([" Bulk Prediction (CSV)", "🧍 Single Player Prediction"])
+tab1, tab2 = st.tabs([" Bulk Prediction (CSV)", "Single Player Prediction"])
 
 #bulk prediction
 with tab1:
@@ -44,7 +44,7 @@ with tab1:
                 mime='text/csv'
                 )
 
-                st.write("### Bar Chart of Predicted G+A")
+                st.write("Bar Chart of Predicted G+A")
                 fig, ax = plt.subplots(figsize=(10, 5))
                 ax.bar(df['Player'], df['Predicted_G+A'], color='steelblue')
                 plt.xticks(rotation=45, ha='right')
@@ -54,7 +54,7 @@ with tab1:
                 N = st.slider("Show Top N Players", 3, 20, 5)
                 df_top = df.sort_values(by='Predicted_G+A', ascending=False).head(N)
 
-                st.write(f"### Top {N} Players by Predicted G+A")
+                st.write(f" Top {N} Players by Predicted G+A")
                 fig2, ax2 = plt.subplots(figsize=(8, 4))
                 ax2.barh(df_top['Player'], df_top['Predicted_G+A'], color='lightgreen')
                 ax2.invert_yaxis()
